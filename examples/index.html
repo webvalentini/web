@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>three.js css3d - panorama</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="">
+      
+      <style>
+        
+body {
+    margin: 0;
+	background-color: #000;
+	color: white;
+}
+        
+.back {   
+   position: fixed;
+   z-index:1;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: linear-gradient(135deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,.1) 100%);
+        }
+       
+
+p {margin:0}
+
+a {
+	color: white;
+	text-decoration: none;
+  	font-style:italic;
+  	font-weight: 300; 
+    border-bottom: 1px solid currentColor;
+    pointer-events: auto;
+}
+        
+/*a:before {
+   content: "⇲ ";
+   text-decoration: none !important;
+}*/
+
+a:hover {
+	text-decoration: line-through;
+}
+        
+a.logo {
+    border-bottom: none;
+}
+
+button {
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+
+        
+#more {display: none;}
+             
+.logos {
+	position: absolute;
+  	opacity: .8;
+    z-index: 2;
+    float: left;
+    top: 20rem;
+    right: -17rem;
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+        }
+        
+.emma, .conc, .bar {
+  	width: 9rem;
+    padding: 2.5rem;
+        }
+        
+.nombre {
+  font-weight: 300;
+
+        }
+
+#info {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    /* background-size: cover; */
+    /* text-shadow: 2px 2px 6px black;*/
+    position: absolute;
+    overflow: auto;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin: 4.5rem;
+    padding-right: 16vw;
+    /* padding-top: 5rem; */
+    width: 84%;
+    word-wrap: normal;
+    box-sizing: border-box;
+    text-align: left;
+    /* height: 18rem; */
+    z-index: 3;
+
+}
+
+        /*
+#info::-webkit-scrollbar {
+  width: 7px;
+}
+
+#info::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .5);
+}
+
+#info::-webkit-scrollbar-corner { background: rgba(0,0,0,0); }*/
+        
+#news {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  	text-shadow: 1px 1px 4px black;
+    z-index: 3;
+	position: absolute;
+  	overflow:auto;
+  	font-size: 1.3rem;
+	line-height: 1.8rem;
+    bottom: 10rem;
+  	margin-left: 3.5rem;
+    margin-right: 3.5rem;
+    padding-right: 3rem;
+	width: 84%;
+	word-wrap: break-word;
+	box-sizing: border-box;
+	text-align: left;
+	z-index: 1; /* TODO Solve this in HTML */
+}
+        
+@media (max-width: 768px) {
+  
+  html {
+  overflow-x:hidden !important;
+  overflow-y:hidden !important;
+  height: 88vh;
+  width: 100vw;
+  position:fixed;
+
+  }
+
+/*  
+ #info::-webkit-scrollbar {
+  width: 4px;
+}*/
+ 
+  
+  #info {
+ 	margin-top: 1.3rem;
+    margin-left: 1.3rem;
+    margin-right: 1.9rem;
+    height: 85vh; 
+    font-size: 1rem;
+    line-height: 1.4rem;
+    padding-right: 1.2rem;
+	
+  }
+  
+  #news {
+    margin-left: 1.3rem;
+    margin-right: 1.8rem;
+    bottom: 2.5rem;
+    font-size: .75rem;
+	line-height: 1.1rem;
+    padding-right: 1rem;
+    
+
+  }
+  .logos {
+    right: -12rem;
+    top: 14rem;
+        }
+        
+  .emma, .conc, .bar {
+	width: 5rem;
+    padding-top: 0rem;
+    padding-right: 1.5rem;
+    padding-bottom: 0rem;
+    padding-left: 2rem;
+  	
+        }
+  
+        }
+
+a, button, input, select {
+	pointer-events: auto;
+}
+
+.dg.ac {
+	/*-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	z-index: 2 !important;  TODO Solve this in HTML */
+}
+
+        
+      </style>
+
+	</head>
+	<body style="pointer-events: auto !important;cursor:auto !important;  user-select: text !important;">
+      <div class="back"></div>
+		<div id="info">
+          <p><span class="nombre">Veronica Valentini ♡</span> is a curator, educator and researcher based in Barcelona with an international experience in contemporary art of more than ten years. Her curatorial praxis promotes the production of social knowledge through the informal setting of distributed and situated learning process with social exchange on art and society based on "radical sociability, informality and itinerancy”. Valentini’s areas of interests lies on collective, institutional and feminist practices, intersectional perspective, and the conditions created by artistic and non-artistic environment by all cultural agents and practitioners.
+          <br><br>She is founding director of <a href="http://www.e-m-m-a.org/" target="_blank" >E.M.M.A</a> and co-founding director of <a href="https://barproject.net/" target="_blank" >Bar project</a>, two self-run curatorial organizations considered as tools for thought, imagination and action. Since is also official mediator for the <a href="https://concomitentes.org/" target="_blank">Concomitentes</a> (New Patrons/Nouveaux Commanditaires) citizen art program in Spain sponsored by the Daniel & Nina Carasso Foundation (Madrid) that promote the creation of artworks that engage with their social context inviting civil society groups to become the citizen-commissioners of an artwork. Currently, she is working with functional diversity activists of Movement for Independent Life of Barcelona on the project Diversorium: a communal space in which to come together and celebrate human diversities and difference through cabaret, dance, workshops, talk and parties in a night club and a civic centre of the city.
+					<br><br>She studied at PEI-Independent Study Program of the MACBA museum with philosopher Paul B Preciado and at the International Curatorial Training Program of Ecole du Magasin in Grenoble (FR); she holds a MA in Visual Arts/Historical & Artistic Heritage and graduated in Fine Arts both in Italy. During 2020, she will be attending “Commissioning and Curating Contemporary Public Art”, a freestanding course delivered by the University of Gothenburg.
+					<br><br>Full resume <a href="https://drive.google.com/file/d/1Tjv7o2bVnftxmZyfVyPdVRhERF6rResW/view" target="_blank" >here</a>
+					<br><br>veronicavalentini@gmail.com<br><br>
+  
+  </p>
+      </div>
+      
+      <!--<div id="news">
+      <br><br>
+          
+<br>
+  <a id="link" target="_blank" href="" >Curators Curators</a> Tate Modern, London, 6 July – 10 Nov. 2019<br>
+  <a id="link" target="_blank" href="https://www.artforum.com/artguide/rachel-uffner-gallery-6765/embajada-presents-futuro-modular-curated-by-christopher-rivera-178510" >Expo Expo</a> With Artist 1, Artist 2, Aritist 3 at Rachel Uffner Gallery, New York, New York. Nov 10th - Jan 12th<br>
+  <a id="link" target="_blank" href="" >BAR Module</a> Artist, artist y artist at Fabra i Coats, Barcelona, 6 Nov – 10 Dec. 2019<br><br>
+        </div>-->
+  
+      
+      
+      <div class="logos">
+        <a class="logo" href="https://barproject.net/" target="_blank" ><img src="/bar.png" class="bar"></a>
+        <a class="logo" href="http://www.e-m-m-a.org/" target="_blank" ><img src="/emma.png" class="emma"></a>
+        <a class="logo" href="https://concomitentes.org/" target="_blank"><img src="/conc.png" class="conc"></a>
+      </div>
+
+		<script type="module">
+
+			import * as THREE from '../build/three.module.js';
+
+			import { CSS3DRenderer, CSS3DObject } from './jsm/renderers/CSS3DRenderer.js';
+
+			var camera, scene, renderer;
+			var target = new THREE.Vector3();
+
+			var lon = 90, lat = 0;
+			var phi = 0, theta = 0;
+
+			var touchX, touchY;
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
+
+				scene = new THREE.Scene();
+
+				var sides = [
+					{
+						url: 'textures/cube/fotop/posx.png',
+						position: [ - 512, 0, 0 ],
+						rotation: [ 0, Math.PI / 2, 0 ]
+					},
+					{
+						url: 'textures/cube/fotop/negx.png',
+						position: [ 512, 0, 0 ],
+						rotation: [ 0, - Math.PI / 2, 0 ]
+					},
+					{
+						url: 'textures/cube/fotop/posy.png',
+						position: [ 0, 512, 0 ],
+						rotation: [ Math.PI / 2, 0, Math.PI ]
+					},
+					{
+						url: 'textures/cube/fotop/negy.png',
+						position: [ 0, - 512, 0 ],
+						rotation: [ - Math.PI / 2, 0, Math.PI ]
+					},
+					{
+						url: 'textures/cube/fotop/posz.png',
+						position: [ 0, 0, 512 ],
+						rotation: [ 0, Math.PI, 0 ]
+					},
+					{
+						url: 'textures/cube/fotop/negz.png',
+						position: [ 0, 0, - 512 ],
+						rotation: [ 0, 0, 0 ]
+					}
+				];
+
+				for ( var i = 0; i < sides.length; i ++ ) {
+
+					var side = sides[ i ];
+
+					var element = document.createElement( 'img' );
+					element.width = 1026; // 2 pixels extra to close the gap.
+					element.src = side.url;
+
+					var object = new CSS3DObject( element );
+					object.position.fromArray( side.position );
+					object.rotation.fromArray( side.rotation );
+					scene.add( object );
+
+				}
+
+				renderer = new CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+                renderer.domElement.style.position = 'fixed'; // esto hace el fondo position:fixed woohoo
+
+				//
+
+				//document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+				//document.addEventListener( 'wheel', onDocumentMouseWheel, false );
+
+				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function onDocumentMouseDown( event ) {
+
+				event.preventDefault();
+
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+
+			}
+
+			function onDocumentMouseMove( event ) {
+
+				var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+				var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+
+				lon -= movementX * 0.1;
+				lat += movementY * 0.1;
+
+			}
+
+			function onDocumentMouseUp() {
+
+				document.removeEventListener( 'mousemove', onDocumentMouseMove );
+				document.removeEventListener( 'mouseup', onDocumentMouseUp );
+
+			}
+
+			function onDocumentMouseWheel( event ) {
+
+				var fov = camera.fov + event.deltaY * 0.05;
+
+				camera.fov = THREE.Math.clamp( fov, 10, 75 );
+
+				camera.updateProjectionMatrix();
+
+			}
+
+			function onDocumentTouchStart( event ) {
+
+				event.preventDefault();
+
+				var touch = event.touches[ 0 ];
+
+				touchX = touch.screenX;
+				touchY = touch.screenY;
+
+			}
+
+			function onDocumentTouchMove( event ) {
+
+				event.preventDefault();
+
+				var touch = event.touches[ 0 ];
+
+				lon -= ( touch.screenX - touchX ) * 0.1;
+				lat += ( touch.screenY - touchY ) * 0.1;
+
+				touchX = touch.screenX;
+				touchY = touch.screenY;
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				lon += 0.02; // velocidad de animacion?
+				lat = Math.max( - 85, Math.min( 85, lat ) );
+				phi = THREE.Math.degToRad( 60 - lat ); //este es el ángulo de incio, default 90
+				theta = THREE.Math.degToRad( lon );
+
+				target.x = Math.sin( phi ) * Math.cos( theta );
+				target.y = Math.cos( phi );
+				target.z = Math.sin( phi ) * Math.sin( theta );
+
+				camera.lookAt( target );
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+ <script>
+ /*
+function showMas() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "&#9662; Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "&#9652; Read less"; 
+    moreText.style.display = "inline";
+  }
+}*/
+</script>
+	</body>
+</html>
